@@ -1,4 +1,5 @@
 const express = require("express");
+const mongoose = require('mongoose');
 const bodyParser = require("body-parser");
 const cors = require("cors");
 const path = require("path");
@@ -28,6 +29,7 @@ app.use(express.json());
 
 
 // Connect to MongoDB
+mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/googlebooks");
 // uncoment out with ready for MONGOOOOO!
 // await mongoose.connect('mongodb://localhost/googlebooks', {
 //   useNewUrlParser: true,
