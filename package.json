@@ -12,6 +12,7 @@
     "build": "cd client && npm run build",
     "heroku-postbuild": "npm run build",
     "server": "nodemon server.js",
+    "seed": "node scripts/seedDb.js",
     "dev": "concurrently --kill-others-on-fail \"npm run client\" \"npm run server\"",
     "client:build": "cd client && npm run build"
   },
@@ -23,6 +24,7 @@
   },
   "dependencies": {
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.5.3",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "if-env": "^1.0.4",

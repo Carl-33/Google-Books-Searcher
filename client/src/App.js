@@ -1,26 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-import axios from 'axios';
+import Nav from "./Components/Nav"
 
-class App extends Component {
-  state = {
-    response: {}
-  };
-  componentDidMount() {
-    axios.get('/api/v1/say-something').then((res) => {
-      const response = res.data;
-      this.setState({response});
-    });
-  }
-  render() {
+function App() {
     return (
-      <div className="App">
-        <h1>What's up jerks</h1>
-        <h1>{this.state.response.body}</h1>
-      </div> 
+    <div>
+      <Nav />
+      {/* <Books /> */}
+    </div>
     );
   }
-}
+
 
 export default App;
