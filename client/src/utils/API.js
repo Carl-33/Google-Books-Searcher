@@ -1,9 +1,13 @@
 import axios from "axios";
-import API_KEY from "../../config";
+import config from "../config";
+
+const API_KEY = config.API_KEY
 
 export default {
-    search: function() {
-        return axios.get("https://www.googleapis.com/books/v1/volumes?q=flowers+inauthor:keyes&key=" + API_KEY)
+    searchForBook: function(book) {
+        console.log(API_KEY);
+        console.log(book)
+        return axios.get("https://www.googleapis.com/books/v1/volumes?q=" + book + "&key=" + API_KEY)
+        
     }
-
 }
