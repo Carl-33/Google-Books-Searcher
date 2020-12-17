@@ -7,7 +7,8 @@ import API from "../utils/API"
 class Search extends Component {
     state = {
         search: "",
-        results: []
+        results: [],
+        error: ""
     };
 
     handleInputChange = event => {
@@ -17,13 +18,26 @@ class Search extends Component {
         event.preventDefault();
         API.searchForBook(this.state.search)
           .then(res => {
-            if (res.data.status === "error") {
-              throw new Error(res.data.message);
+            if (res.data.items === "error") {
+              throw new Error(res.data.itmes);
+            } else { 
+              let searchResults = res.data.items
+              let results = searchResults.map(result => {
+                result = {
+                  title: result.volumeInfo.title,
+                  authors: result.volumeInfo.authors,
+                  description: result.volumeInfo.description,
+                  image: result.volumeInfo.imageLinks.image,
+                  link: result.volumeInfo.link
+                }
+                console.log(result)
+                return result;
+              })
+              this.setState({ results: results, error: "" })
             }
-            this.setState({ results: res.data.message, error: "" });
           })
           .catch(err => this.setState({ error: err.message }));
-        }
+        };
 
     render() {
         return (
