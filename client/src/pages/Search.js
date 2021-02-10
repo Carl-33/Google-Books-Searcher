@@ -19,7 +19,7 @@ class Search extends Component {
         API.searchForBook(this.state.search)
           .then(res => {
             if (res.data.items === "error") {
-              throw new Error(res.data.itmes);
+              throw new Error(res.data.items);
             } else { 
               let searchResults = res.data.items
               let results = searchResults.map(result => {
